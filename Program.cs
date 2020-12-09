@@ -41,13 +41,13 @@ namespace Abstração
 
                     boleto.Registrar("123qweasdrty");
 
-                    boleto.Desconto(boleto.Valor);
+                    boleto.Desconto();
                     boleto.Juros(parcelas);
 
-                    Console.Write($"O boleto {boleto.CodigoDeBarras} no valor de {boleto.ValorFinal(boleto.Valor).ToString("C")}");
+                    Console.Write($"O boleto {boleto.CodigoDeBarras} no valor de {boleto.ValorFinal().ToString("C")}");
                     if (parcelas > 1)
                     {
-                        var valorParcela = (boleto.ValorFinal(boleto.Valor) / parcelas).ToString("C");
+                        var valorParcela = (boleto.ValorFinal() / parcelas).ToString("C");
                         Console.WriteLine($" em {parcelas} parcelas de {valorParcela} cada");
                     }
                     else
@@ -60,15 +60,15 @@ namespace Abstração
 
                     debito.Valor = valorTotal;
 
-                    debito.Desconto(debito.Valor);
+                    debito.Desconto();
 
-                    if (debito.Saldo < debito.Desconto(debito.Valor))
+                    if (debito.Saldo < debito.Desconto())
                     {
                         Console.WriteLine("Saldo insuficiente, cancelando transação");
                     }
                     else
                     {
-                        Console.WriteLine($"A compra de {debito.Pagar(debito.Valor)} foi concluida com sucesso");
+                        Console.WriteLine($"A compra de {debito.Pagar()} foi concluida com sucesso");
                     }
 
                     break;
@@ -78,18 +78,18 @@ namespace Abstração
                     credito.Valor = valorTotal;
 
                     credito.Juros(parcelas);
-                    credito.Desconto(credito.Valor);
+                    credito.Desconto();
 
-                    if (credito.Limite < credito.Pagar(credito.Valor))
+                    if (credito.Limite < credito.Pagar())
                     {
                         Console.WriteLine("Limite insuficiente, cancelando transação");
                     }
                     else
                     {
-                        Console.Write($"A compra de {credito.Pagar(credito.Valor)} foi concluida com sucesso");
+                        Console.Write($"A compra de {credito.Pagar()} foi concluida com sucesso");
                         if (parcelas > 1)
                         {
-                            var valorParcela = (credito.Pagar(credito.Valor) / parcelas).ToString("C");
+                            var valorParcela = (credito.Pagar() / parcelas).ToString("C");
                             Console.WriteLine($" em {parcelas} parcelas de {valorParcela} cada");
                         }
                     }

@@ -13,7 +13,7 @@ namespace Abstração.Classes
             return 0;
         }
 
-        public override double Desconto(double valor){
+        public override double Desconto(){
             if(valor >= 400){
                 desconto = 0.95;
             }else{
@@ -23,7 +23,7 @@ namespace Abstração.Classes
         }
 
 
-        public double Pagar(double valor){
+        public double Pagar(){
             this.valor =  this.valor * desconto;
             return this.valor;
         }

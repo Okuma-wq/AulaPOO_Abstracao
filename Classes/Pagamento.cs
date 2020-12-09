@@ -16,7 +16,7 @@ namespace Abstração.Classes
             return "";
         }
 
-        public abstract double Desconto(double valor);
+        public abstract double Desconto();
 
         protected double desconto;
 

@@ -21,12 +21,12 @@ namespace Abstração.Classes
             return juros;
         }
 
-        public override double Desconto(double Valor){
+        public override double Desconto(){
             desconto = 0.88;
             return desconto;
         }
 
-        public double ValorFinal(double valor){
+        public double ValorFinal(){
             double valorfinal = this.valor * desconto * juros;
             return valorfinal;
         }
